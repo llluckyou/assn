@@ -4,6 +4,7 @@
        xmlns:context="http://www.springframework.org/schema/context"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
        <mvc:default-servlet-handler />
+       <mvc:annotation-driven />
 
        <context:component-scan base-package="com.assn.controller" />
        <!--<context:component-scan base-package="com.springmvc.view" />-->
@@ -13,19 +14,25 @@
               <!--<property name="order" value="10" />-->
        <!--</bean>-->
 
-       <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver" >
+       <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver" id="internalResourceViewResolver">
               <property name="prefix" value="/WEB-INF/jsp/" />
               <property name="suffix" value=".jsp" />
        </bean>
 
 
+       <!--用户登录校验-->
+       <mvc:interceptors>
+              <mvc:interceptor>
+                     <mvc:mapping path="/party*"/>
+                     <mvc:mapping path="/user*"/>
+                     <mvc:exclude-mapping path="/user/reg"/>
+                     <bean class="com.assn.interceptors.LoginInterceptor"/>
+              </mvc:interceptor>
+       </mvc:interceptors>
 
        <!--&lt;!&ndash; 配置国际化资源文件 &ndash;&gt;-->
        <!--<bean id="messageSource" class="org.springframework.context.support.ResourceBundleMessageSource">-->
               <!--<property name="basename" value="i18n" ></property>-->
        <!--</bean>-->
 
-       <!-- 配置直接转发页面 -->
-       <mvc:view-controller path="/jsp" view-name="re" ></mvc:view-controller>
-       <mvc:annotation-driven></mvc:annotation-driven>
 </beans>
