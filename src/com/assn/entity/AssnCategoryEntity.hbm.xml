@@ -1,0 +1,21 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+
+    <class name="com.assn.entity.AssnCategoryEntity" table="assn_category" schema="assn">
+        <id name="categoryId">
+            <column name="category_id" sql-type="varchar(20)" length="20"/>
+        </id>
+        <property name="categoryName">
+            <column name="category_name" sql-type="varchar(12)" length="12"/>
+        </property>
+        <property name="categoryParentId">
+            <column name="category_parent_id" sql-type="int(11)"/>
+        </property>
+        <property name="categoryParentName">
+            <column name="category_parent_name" sql-type="varchar(12)" length="12"/>
+        </property>
+    </class>
+</hibernate-mapping>

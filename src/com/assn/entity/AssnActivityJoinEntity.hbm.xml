@@ -1,0 +1,20 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+
+    <class name="com.assn.entity.AssnActivityJoinEntity" table="assn_activity_join" schema="assn">
+        <composite-id mapped="true" class="com.assn.entity.AssnActivityJoinEntityPK">
+            <key-property name="userId">
+                <column name="user_id" sql-type="bigint(20)"/>
+            </key-property>
+            <key-property name="activityId">
+                <column name="activity_id" sql-type="bigint(20)"/>
+            </key-property>
+        </composite-id>
+        <property name="applyTime">
+            <column name="apply_time" sql-type="datetime"/>
+        </property>
+    </class>
+</hibernate-mapping>

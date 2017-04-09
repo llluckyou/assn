@@ -1,0 +1,66 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+
+    <class name="com.assn.entity.AssnUserEntity" table="assn_user" schema="assn">
+        <id name="userId">
+            <column name="user_id" sql-type="bigint(11)"/>
+        </id>
+        <property name="userName">
+            <column name="user_name" sql-type="varchar(20)" length="20"/>
+        </property>
+        <property name="userImgPath">
+            <column name="user_img_path" sql-type="varchar(50)" length="50"/>
+        </property>
+        <property name="userPassword">
+            <column name="user_password" sql-type="varchar(20)" length="20"/>
+        </property>
+        <property name="userRealName">
+            <column name="user_real_name" sql-type="varchar(20)" length="20"/>
+        </property>
+        <property name="userMailbox">
+            <column name="user_mailbox" sql-type="varchar(30)" length="30"/>
+        </property>
+        <property name="userCellphone">
+            <column name="user_cellphone" sql-type="varchar(15)" length="15"/>
+        </property>
+        <property name="userStuId">
+            <column name="user_stu_id" sql-type="varchar(20)" length="20"/>
+        </property>
+        <property name="userClass">
+            <column name="user_class" sql-type="varchar(12)" length="12"/>
+        </property>
+        <property name="schoolName">
+            <column name="school_name" sql-type="varchar(12)" length="12"/>
+        </property>
+        <property name="schoolId">
+            <column name="school_id" sql-type="bigint(20)"/>
+        </property>
+        <property name="userStatus">
+            <column name="user_status" sql-type="varchar(1)" length="1"/>
+        </property>
+        <property name="userLastLogTime">
+            <column name="user_last_log_time" sql-type="datetime"/>
+        </property>
+        <property name="userLastLogIp">
+            <column name="user_last_log_ip" sql-type="varchar(15)" length="15"/>
+        </property>
+        <property name="userCreateTime">
+            <column name="user_create_time" sql-type="datetime"/>
+        </property>
+        <property name="userIntegration">
+            <column name="user_integration" sql-type="int(11)"/>
+        </property>
+        <property name="userGrade">
+            <column name="user_grade" sql-type="int(11)"/>
+        </property>
+        <property name="userCurrentPx">
+            <column name="user_current_px" sql-type="bigint(20)"/>
+        </property>
+        <property name="userTotalPx">
+            <column name="user_total_px" sql-type="bigint(20)"/>
+        </property>
+    </class>
+</hibernate-mapping>

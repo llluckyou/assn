@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+       <mvc:default-servlet-handler />
+
+       <context:component-scan base-package="com.assn.controller" />
+       <!--<context:component-scan base-package="com.springmvc.view" />-->
+
+       <!-- 自定义视图解析器 -->
+       <!--<bean class="org.springframework.web.servlet.view.BeanNameViewResolver">-->
+              <!--<property name="order" value="10" />-->
+       <!--</bean>-->
+
+       <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver" >
+              <property name="prefix" value="/WEB-INF/jsp/" />
+              <property name="suffix" value=".jsp" />
+       </bean>
+
+
+
+       <!--&lt;!&ndash; 配置国际化资源文件 &ndash;&gt;-->
+       <!--<bean id="messageSource" class="org.springframework.context.support.ResourceBundleMessageSource">-->
+              <!--<property name="basename" value="i18n" ></property>-->
+       <!--</bean>-->
+
+       <!-- 配置直接转发页面 -->
+       <mvc:view-controller path="/jsp" view-name="re" ></mvc:view-controller>
+       <mvc:annotation-driven></mvc:annotation-driven>
+</beans>

@@ -1,0 +1,42 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+
+    <class name="com.assn.entity.AssnCreateInfoEntity" table="assn_create_info" schema="assn">
+        <id name="id">
+            <column name="id" sql-type="bigint(20)"/>
+        </id>
+        <property name="userId">
+            <column name="user_id" sql-type="bigint(11)"/>
+        </property>
+        <property name="assnName">
+            <column name="assn_name" sql-type="int(11)"/>
+        </property>
+        <property name="assnCategoryId">
+            <column name="assn_category_id" sql-type="varchar(20)" length="20"/>
+        </property>
+        <property name="assnProperty">
+            <column name="assn_property" sql-type="int(11)"/>
+        </property>
+        <property name="schoolId">
+            <column name="school_id" sql-type="bigint(20)"/>
+        </property>
+        <property name="userCellphone">
+            <column name="user_cellphone" sql-type="int(11)"/>
+        </property>
+        <property name="status">
+            <column name="status" sql-type="int(11)"/>
+        </property>
+        <property name="verification">
+            <column name="verification" sql-type="varchar(200)" length="200"/>
+        </property>
+        <property name="managerId">
+            <column name="manager_id" sql-type="bigint(20)"/>
+        </property>
+        <property name="createDate">
+            <column name="create_date" sql-type="datetime"/>
+        </property>
+    </class>
+</hibernate-mapping>

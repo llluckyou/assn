@@ -1,0 +1,36 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+
+    <class name="com.assn.entity.AssnPartyEntity" table="assn_party" schema="assn">
+        <id name="partyId">
+            <column name="party_id" sql-type="bigint(20)"/>
+        </id>
+        <property name="partyName">
+            <column name="party_name" sql-type="varchar(20)" length="20"/>
+        </property>
+        <property name="partyContact">
+            <column name="party_contact" sql-type="varchar(50)" length="50"/>
+        </property>
+        <property name="partyResume">
+            <column name="party_resume" sql-type="varchar(100)" length="100"/>
+        </property>
+        <property name="partySchoolId">
+            <column name="party_school_id" sql-type="bigint(20)"/>
+        </property>
+        <property name="partyNumber">
+            <column name="party_number" sql-type="int(11)"/>
+        </property>
+        <property name="partyProperty">
+            <column name="party_property" sql-type="varchar(1)" length="1"/>
+        </property>
+        <property name="partyCategoryId">
+            <column name="party_category_id" sql-type="varchar(20)" length="20"/>
+        </property>
+        <property name="partyCreateDate">
+            <column name="party_create_date" sql-type="datetime"/>
+        </property>
+    </class>
+</hibernate-mapping>

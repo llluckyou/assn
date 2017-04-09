@@ -1,0 +1,33 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+
+    <class name="com.assn.entity.AssnWebManagerEntity" table="assn_web_manager" schema="assn">
+        <id name="managerId">
+            <column name="manager_id" sql-type="bigint(20)"/>
+        </id>
+        <property name="managerUsername">
+            <column name="manager_username" sql-type="varchar(20)" length="20"/>
+        </property>
+        <property name="managerDp">
+            <column name="manager_dp" sql-type="varchar(100)" length="100"/>
+        </property>
+        <property name="managerPassword">
+            <column name="manager_password" sql-type="varchar(20)" length="20"/>
+        </property>
+        <property name="managerName">
+            <column name="manager_name" sql-type="varchar(20)" length="20"/>
+        </property>
+        <property name="managerCellphone">
+            <column name="manager_cellphone" sql-type="varchar(15)" length="15"/>
+        </property>
+        <property name="managerLastLogIp">
+            <column name="manager_last_log_ip" sql-type="varchar(15)" length="15"/>
+        </property>
+        <property name="managerLastLogTime">
+            <column name="manager_last_log_time" sql-type="datetime"/>
+        </property>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,30 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+
+    <class name="com.assn.entity.AssnActivityCommentEntity" table="assn_activity_comment" schema="assn">
+        <id name="commentId">
+            <column name="comment_id" sql-type="bigint(20)"/>
+        </id>
+        <property name="commentParentId">
+            <column name="comment_parent_id" sql-type="bigint(20)"/>
+        </property>
+        <property name="activityId">
+            <column name="activity_id" sql-type="bigint(20)"/>
+        </property>
+        <property name="userId">
+            <column name="user_id" sql-type="bigint(20)"/>
+        </property>
+        <property name="commentTime">
+            <column name="comment_time" sql-type="datetime"/>
+        </property>
+        <property name="content">
+            <column name="content" sql-type="text"/>
+        </property>
+        <property name="status">
+            <column name="status" sql-type="varchar(1)" length="1"/>
+        </property>
+    </class>
+</hibernate-mapping>

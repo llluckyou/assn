@@ -1,0 +1,45 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+
+    <class name="com.assn.entity.AssnActivityEntity" table="assn_activity" schema="assn">
+        <id name="activityId">
+            <column name="activity_id" sql-type="bigint(20)"/>
+        </id>
+        <property name="activityPartyId">
+            <column name="activity_party_id" sql-type="bigint(20)"/>
+        </property>
+        <property name="activityUserId">
+            <column name="activity_user_id" sql-type="bigint(20)"/>
+        </property>
+        <property name="activityName">
+            <column name="activity_name" sql-type="varchar(20)" length="20"/>
+        </property>
+        <property name="activityApplyTime">
+            <column name="activity_apply_time" sql-type="datetime"/>
+        </property>
+        <property name="activityContent">
+            <column name="activity_content" sql-type="varchar(300)" length="300"/>
+        </property>
+        <property name="activitySpace">
+            <column name="activity_space" sql-type="varchar(20)" length="20"/>
+        </property>
+        <property name="activityPraise">
+            <column name="activity_praise" sql-type="int(11)"/>
+        </property>
+        <property name="activityStartDate">
+            <column name="activity_start_date" sql-type="datetime"/>
+        </property>
+        <property name="activityEndDate">
+            <column name="activity_end_date" sql-type="datetime"/>
+        </property>
+        <property name="activityStatus">
+            <column name="activity_status" sql-type="smallint(6)"/>
+        </property>
+        <property name="activityScore">
+            <column name="activity_score" sql-type="int(11)"/>
+        </property>
+    </class>
+</hibernate-mapping>
