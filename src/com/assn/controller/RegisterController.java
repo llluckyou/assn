@@ -19,7 +19,7 @@ import java.sql.Timestamp;
 
 public class RegisterController {
 
-    @Resource(name = "activityJoinServiceImpl")
+    @Resource
     private ActivityJoinService activityJoinService;
 
     @RequestMapping("/testRegister")
