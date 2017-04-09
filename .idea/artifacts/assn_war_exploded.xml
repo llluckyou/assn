@@ -1,0 +1,20 @@
+<component name="ArtifactManager">
+  <artifact type="exploded-war" name="assn:war exploded">
+    <output-path>$PROJECT_DIR$/out/artifacts/assn_war_exploded</output-path>
+    <root id="root">
+      <element id="directory" name="WEB-INF">
+        <element id="directory" name="classes">
+          <element id="module-output" name="assn" />
+        </element>
+        <element id="directory" name="lib">
+          <element id="library" level="application" name="Hibernate 5.2.3-5.2.3" />
+          <element id="library" level="application" name="Spring-4.3.7.RELEASE" />
+          <element id="library" level="application" name="Spring MVC-4.3.7.RELEASE" />
+          <element id="library" level="application" name="mysql:mysql-connector-java:5.1.40" />
+          <element id="library" level="application" name="aspectj:aspectjweaver:1.5.3" />
+        </element>
+      </element>
+      <element id="javaee-facet-resources" facet="assn/web/Web" />
+    </root>
+  </artifact>
+</component>

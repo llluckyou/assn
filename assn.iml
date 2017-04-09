@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<module type="JAVA_MODULE" version="4">
+<module org.jetbrains.idea.maven.project.MavenProjectsManager.isMavenModule="true" type="JAVA_MODULE" version="4">
   <component name="FacetManager">
     <facet type="web" name="Web">
       <configuration>
@@ -9,32 +9,44 @@
         <webroots>
           <root url="file://$MODULE_DIR$/web" relative="/" />
         </webroots>
+        <sourceRoots />
       </configuration>
     </facet>
     <facet type="Spring" name="Spring">
-      <configuration />
+      <configuration>
+        <fileset id="web application context" name="MVC application context" removed="true">
+          <file>file://$MODULE_DIR$/web/WEB-INF/applicationContext.xml</file>
+        </fileset>
+        <fileset id="web dispatcher servlet context" name="MVC dispatcher servlet context" removed="true">
+          <file>file://$MODULE_DIR$/web/WEB-INF/dispatcher-servlet.xml</file>
+        </fileset>
+        <fileset id="fileset" name="Spring Application Context" removed="false">
+          <file>file://$MODULE_DIR$/web/WEB-INF/applicationContext.xml</file>
+          <file>file://$MODULE_DIR$/web/WEB-INF/dispatcher-servlet.xml</file>
+        </fileset>
+      </configuration>
     </facet>
     <facet type="hibernate" name="Hibernate">
       <configuration>
         <datasource-map>
-          <unit-entry name="sessionFactory" value="ab690e56-8877-443a-8820-55b87526822a" />
+          <unit-entry name="sessionFactory" value="ebb5a372-5e23-4a37-8264-a1a3b657fa15" />
         </datasource-map>
         <naming-strategy-map />
       </configuration>
     </facet>
   </component>
   <component name="NewModuleRootManager" inherit-compiler-output="true">
-    <exclude-output />
     <content url="file://$MODULE_DIR$">
       <sourceFolder url="file://$MODULE_DIR$/src" isTestSource="false" />
+      <excludeFolder url="file://$MODULE_DIR$/out" />
     </content>
-    <orderEntry type="inheritedJdk" />
+    <orderEntry type="jdk" jdkName="1.8" jdkType="JavaSDK" />
     <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="library" name="Hibernate 5.2.3-5.2.3" level="application" />
     <orderEntry type="library" name="Spring-4.3.7.RELEASE" level="application" />
-    <orderEntry type="library" name="Spring MVC-4.3.7.RELEASE" level="application" />
-    <orderEntry type="library" name="hibernate-core-5.2.3.Final" level="project" />
-    <orderEntry type="library" name="mysql-connector-java-5.1.41-bin" level="project" />
-    <orderEntry type="library" name="J2EE" level="project" />
+    <orderEntry type="library" name="mysql:mysql-connector-java:5.1.40" level="application" />
     <orderEntry type="library" name="aspectj:aspectjweaver:1.5.3" level="application" />
+    <orderEntry type="library" name="javax:javaee-api:6.0" level="application" />
+    <orderEntry type="library" name="Spring MVC-4.3.7.RELEASE" level="application" />
   </component>
 </module>
