@@ -14,7 +14,8 @@ public class LoginInterceptor implements HandlerInterceptor {
     @Override
     public boolean preHandle(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, Object o) throws Exception {
         if(Objects.isNull(httpServletRequest.getSession().getAttribute("user"))){
-            httpServletRequest.getRequestDispatcher("/").forward(httpServletRequest,httpServletResponse);
+            httpServletResponse.sendRedirect("/");
+//            httpServletRequest.getRequestDispatcher("/").forward(httpServletRequest,httpServletResponse);
             return false;
         }
         return true;

@@ -140,7 +140,8 @@ public abstract class BaseDaoImpl<Entity, PK extends Serializable> extends DaoSu
      */
     public Entity findUnique(final Map<String, Object> map) {
         //安全查询创建工厂
-        CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();
+//        CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();
+        CriteriaBuilder criteriaBuilder = getSessionFactory().getCriteriaBuilder();
 
         //安全查询实例
         CriteriaQuery<Entity> criteriaQuery = criteriaBuilder.createQuery(entityClass);
@@ -154,15 +155,15 @@ public abstract class BaseDaoImpl<Entity, PK extends Serializable> extends DaoSu
         for (Map.Entry<String, Object> entry : entrySet) {
             predicateList.add(criteriaBuilder.equal(from.get(entry.getKey()), entry.getValue()));
         }
-        Iterator iterator = predicateList.iterator();
-        while(iterator.hasNext()) {
-            System.out.println(iterator.next().toString());
-        }
+//        Iterator iterator = predicateList.iterator();
+//        while(iterator.hasNext()) {
+//            System.out.println(iterator.next().toString());
+//        }
         criteriaQuery.where(predicateList.toArray(new Predicate[predicateList.size()]));
 
+        return  getSessionFactory().createEntityManager().createQuery(criteriaQuery).getSingleResult();
 
-
-        return entityManager.createQuery(criteriaQuery).getSingleResult();
+//        return entityManager.createQuery(criteriaQuery).getSingleResult();
 
     }
 
@@ -184,6 +185,7 @@ public abstract class BaseDaoImpl<Entity, PK extends Serializable> extends DaoSu
         }
 
         criteriaQuery.where(predicateList.toArray(new Predicate[predicateList.size()]));
+
 
         TypedQuery<Entity> typedQuery = entityManager.createQuery(criteriaQuery);
         return typedQuery.getResultList();

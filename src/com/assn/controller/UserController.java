@@ -66,7 +66,7 @@ public class UserController {
         map.put("userPassword", loginForm.getPassword());
 
         AssnUserEntity userEntity = userService.findUnique(map);
-        if(userEntity != null ) {
+        if(userEntity == null ) {
             return LOGIN_ERROR;
         }else {
             session.setAttribute("user", userEntity);
