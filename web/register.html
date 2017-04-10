@@ -8,43 +8,43 @@
 <body>
 <div id="content">
     <h2>注册信息</h2>
-    <form action="/wow/dispatcherRegister" method="post">
+    <form action="/user/register" method="POST">
         <ul id="info">
             <li>
                 <label for="username">用户名</label>
-                <input id="username" type="text">
+                <input id="username" name="userName" type="text" value="woaidtt">
             </li>
             <li>
                 <label for="password">密码</label>
-                <input id="password" type="password">
+                <input id="password" name="userPassword" type="password" value="123">
             </li>
             <li>
                 <label for="repeat">重复密码</label>
-                <input id="repeat" type="password">
+                <input id="repeat" type="password" value="123">
             </li>
             <li>
                 <label for="realname">姓名</label>
-                <input id="realname" type="text">
+                <input id="realname" name="userRealName" type="text" value="dtt">
             </li>
             <li>
                 <label for="email">邮箱</label>
-                <input type="text" id="email">
+                <input type="text" id="email" name="userMailbox" value="502711108@qq.com">
             </li>
             <li>
                 <label for="cellphone">手机号码</label>
-                <input id="cellphone" type="text">
+                <input id="cellphone" type="text" name="userCellphone" value="15829716739">
             </li>
             <li>
                 <label for="stuid">学号</label>
-                <input type="text" id="stuid">
+                <input type="text" id="stuid" name="userStuId" value="2014117180">
             </li>
             <li>
                 <label for="stuclass">班级</label>
-                <input type="text" id="stuclass">
+                <input type="text" id="stuclass" name="userClass" value="计科二班">
             </li>
             <li>
                 <label for="schoolname">所在学校</label>
-                <input type="text" id="schoolname">
+                <input type="text" id="schoolname" name="schoolName" value="西北大学">
             </li>
             <li id="btn">
                 <input type="submit" id="ok" value="确认">

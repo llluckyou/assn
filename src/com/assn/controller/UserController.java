@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import java.sql.Timestamp;
 import java.util.HashMap;
 import java.util.Map;
@@ -24,13 +25,13 @@ public class UserController {
     @Resource(name = "userServiceImpl")
     private UserService userService;
 
-    private final String FAILED = "registerFailed";
-    private final String SUCCESS = "registerSuccess";
+    private static final String FAILED = "registerFailed";
+    private static final String SUCCESS = "registerSuccess";
 
     @RequestMapping(value = "/register", method = RequestMethod.POST)
     public String register(HttpServletRequest httpServletRequest,AssnUserEntity userEntity, ModelMap map) {
         Map<String, Object> condition = new HashMap<>();
-        condition.put("userName", userEntity);
+        condition.put("userName", userEntity.getUserName());
         if(userService.findUnique(condition) != null) {
             map.addAttribute("registerInfo", "当前用户已经存在");
             return FAILED;
@@ -51,8 +52,25 @@ public class UserController {
         return SUCCESS;
     }
 
-    @RequestMapping(value = "/login", method = RequestMethod.POST)
-    public String login(LoginForm loginForm) {
+    private static final String CODE_ERROR = "authError";
+    private static final String LOGIN_ERROR = "loginError";
+    private static final String LOGIN_SUCCESS = "loginSuccess";
 
+    @RequestMapping(value = "/login", method = RequestMethod.POST)
+    public String login(LoginForm loginForm, HttpSession session) {
+        if(!loginForm.getAuthcode().equalsIgnoreCase(session.getAttribute("code").toString())) {
+            return CODE_ERROR;
+        }
+        Map<String, Object> map = new HashMap<>();
+        map.put("userName", loginForm.getUserName());
+        map.put("userPassword", loginForm.getPassword());
+
+        AssnUserEntity userEntity = userService.findUnique(map);
+        if(userEntity != null ) {
+            return LOGIN_ERROR;
+        }else {
+            session.setAttribute("user", userEntity);
+            return LOGIN_SUCCESS;
+        }
     }
 }

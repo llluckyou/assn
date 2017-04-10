@@ -154,12 +154,16 @@ public abstract class BaseDaoImpl<Entity, PK extends Serializable> extends DaoSu
         for (Map.Entry<String, Object> entry : entrySet) {
             predicateList.add(criteriaBuilder.equal(from.get(entry.getKey()), entry.getValue()));
         }
-
+        Iterator iterator = predicateList.iterator();
+        while(iterator.hasNext()) {
+            System.out.println(iterator.next().toString());
+        }
         criteriaQuery.where(predicateList.toArray(new Predicate[predicateList.size()]));
 
-        TypedQuery<Entity> typedQuery = entityManager.createQuery(criteriaQuery);
 
-        return typedQuery.getSingleResult();
+
+        return entityManager.createQuery(criteriaQuery).getSingleResult();
+
     }
 
     /**
