@@ -1,6 +1,7 @@
 package com.assn.service.impl;
 
 import com.assn.dao.BaseDao;
+import com.assn.dao.impl.BaseDaoImpl;
 import com.assn.service.BaseService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -10,6 +11,7 @@ import java.io.Serializable;
 import java.lang.reflect.ParameterizedType;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by Administrator on 2017/4/9.
@@ -46,5 +48,12 @@ public abstract class BaseSeriveImpl<Entity, PK extends Serializable> implements
 
     public List<Entity> findAll() {
         return baseDao.findAll();
+    }
+
+    public Entity findUnique(final Map<String, Object> map) {
+        return (Entity) ((BaseDaoImpl)baseDao).findUnique(map);
+    }
+    public List<Entity> findListByMap(final Map<String, Object> map) {
+        return ((BaseDaoImpl)baseDao).findListByMap(map);
     }
 }

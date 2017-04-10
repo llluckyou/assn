@@ -30,7 +30,7 @@ public class AssnUserEntity {
     private long userTotalPx;
 
     @Id
-    @Column(name = "user_id", nullable = false)
+    @Column(name = "user_id")
     public long getUserId() {
         return userId;
     }
@@ -50,7 +50,7 @@ public class AssnUserEntity {
     }
 
     @Basic
-    @Column(name = "user_img_path", nullable = false, length = 50)
+    @Column(name = "user_img_path", length = 50)
     public String getUserImgPath() {
         return userImgPath;
     }

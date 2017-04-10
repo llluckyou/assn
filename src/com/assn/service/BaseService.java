@@ -1,6 +1,7 @@
 package com.assn.service;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by Administrator on 2017/4/9.
@@ -47,4 +48,18 @@ public interface BaseService<Entity, PK> {
      * @return
      */
     List<Entity> findAll();
+
+    /**
+     * 根据条件查询唯一对象
+     * @param map
+     * @return
+     */
+    Entity findUnique(final Map<String, Object> map);
+
+    /**
+     * 根据条件查询多个对象
+     * @param map
+     * @return
+     */
+    List<Entity> findListByMap(final Map<String, Object> map);
 }

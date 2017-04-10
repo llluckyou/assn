@@ -29,8 +29,6 @@ public class RegisterController {
         return "re";
     }
 
-
-
     @RequestMapping("/dispatcherRegister")
     public String dispatcherRegister(AssnActivityJoinEntity activityJoinEntity, ModelMap map) {
         System.out.println("注册成功");
