@@ -21,6 +21,21 @@ public class AssnPartyEntity {
 //    private String partyCategoryId;
     private Timestamp partyCreateDate;
 
+    @Override
+    public String toString() {
+        return "AssnPartyEntity{" +
+                "partyId=" + partyId +
+                ", partyName='" + partyName + '\'' +
+                ", partyContact='" + partyContact + '\'' +
+                ", partyResume='" + partyResume + '\'' +
+                ", partySchoolId=" + partySchoolId +
+                ", partyNumber=" + partyNumber +
+                ", partyProperty='" + partyProperty + '\'' +
+                ", partyCategoryId=" + partyCategoryId +
+                ", partyCreateDate=" + partyCreateDate +
+                '}';
+    }
+
     @Id
     @Column(name = "party_id", nullable = false)
     public long getPartyId() {

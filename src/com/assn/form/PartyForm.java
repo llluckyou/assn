@@ -26,7 +26,6 @@ public class PartyForm {
 
     @NotNull
     private long partySchoolId;
-
     @NotNull
     @Min(1)
     private int partyNumber;
