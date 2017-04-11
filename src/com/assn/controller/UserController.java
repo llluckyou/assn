@@ -14,7 +14,6 @@ import javax.servlet.http.HttpSession;
 import java.sql.Timestamp;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Objects;
 
 /**
  * Created by Heal on 2017/4/8.
@@ -58,7 +57,7 @@ public class UserController {
 
     @RequestMapping(value = "/login", method = RequestMethod.POST)
     public String login(LoginForm loginForm, HttpSession session) {
-        if(!loginForm.getAuthcode().equalsIgnoreCase(session.getAttribute("code").toString())) {
+        if(!loginForm.getAuthcode().equalsIgnoreCase(session.getAttribute("auth").toString())) {
             return CODE_ERROR;
         }
         Map<String, Object> map = new HashMap<>();
