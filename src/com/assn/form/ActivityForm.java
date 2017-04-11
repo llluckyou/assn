@@ -4,6 +4,7 @@ package com.assn.form;
 import javax.validation.constraints.Future;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+import java.util.Date;
 
 /**
  * Created by Administrator on 2017/4/11.
@@ -23,10 +24,10 @@ public class ActivityForm {
 
     @NotNull
     @Future
-    String activityStartDate;  //活动开始日期
+    Date activityStartDate;  //活动开始日期
     @NotNull
     @Future
-    String activityEndDate;    //活动截止日期
+    Date activityEndDate;    //活动截止日期
 
     @NotNull
     String partyName;          //申办社团
@@ -58,19 +59,19 @@ public class ActivityForm {
         this.activitySpace = activitySpace;
     }
 
-    public String getActivityStartDate() {
+    public Date getActivityStartDate() {
         return activityStartDate;
     }
 
-    public void setActivityStartDate(String activityStartDate) {
+    public void setActivityStartDate(Date activityStartDate) {
         this.activityStartDate = activityStartDate;
     }
 
-    public String getActivityEndDate() {
+    public Date getActivityEndDate() {
         return activityEndDate;
     }
 
-    public void setActivityEndDate(String activityEndDate) {
+    public void setActivityEndDate(Date activityEndDate) {
         this.activityEndDate = activityEndDate;
     }
 

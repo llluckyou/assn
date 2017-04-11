@@ -159,7 +159,10 @@ public abstract class BaseDaoImpl<Entity, PK extends Serializable> extends DaoSu
 //        }
         criteriaQuery.where(predicateList.toArray(new Predicate[predicateList.size()]));
 
-        return  getSessionFactory().createEntityManager().createQuery(criteriaQuery).getSingleResult();
+//        return  getSessionFactory().createEntityManager().createQuery(criteriaQuery).getSingleResult();
+        List<Entity> list = getSessionFactory().createEntityManager().createQuery(criteriaQuery).getResultList();
+
+        return  list.isEmpty() ? null : list.remove(0);
 
 //        return entityManager.createQuery(criteriaQuery).getSingleResult();
 

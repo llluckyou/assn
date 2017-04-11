@@ -4,6 +4,7 @@ import com.assn.entity.AssnActivityEntity;
 import com.assn.entity.AssnUserEntity;
 import com.assn.form.ActivityForm;
 import com.assn.service.ActivityService;
+import com.assn.service.UserService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
@@ -33,7 +34,7 @@ public class ActivityController {
     @RequestMapping("/release")
     public String release(@Valid @ModelAttribute ActivityForm activity, BindingResult bindingResult,
                           HttpSession session) {
-
+session.setAttribute("user", new AssnUserEntity());
         activity.setUserId(((AssnUserEntity) session.getAttribute("user")).getUserId());
 
         if(!bindingResult.hasErrors()) {

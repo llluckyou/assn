@@ -1,6 +1,7 @@
 package com.assn.service.impl;
 
 import com.assn.entity.AssnActivityEntity;
+import com.assn.entity.AssnPartyEntity;
 import com.assn.form.ActivityForm;
 import com.assn.model.formatter.DateFormatter;
 import com.assn.service.ActivityService;
@@ -32,7 +33,12 @@ public class ActivityServiceImpl extends BaseSeriveImpl<AssnActivityEntity, Long
         //查找社团名对应的社团id
         Map<String, Object> condition = new HashMap<>();
         condition.put("partyName", activityForm.getPartyName());
-        Long partyId = partyService.findUnique(condition).getPartyId();
+        AssnPartyEntity partyEntity = partyService.findUnique(condition);
+        Long partyId;
+        if (partyEntity != null) {
+            partyId = partyEntity.getPartyId();
+        }else
+            return false;
         activityEntity.setActivityPartyId(partyId);
 
         //添加用户id
@@ -52,12 +58,14 @@ public class ActivityServiceImpl extends BaseSeriveImpl<AssnActivityEntity, Long
 
 
         //添加开始日期
-        try {
-            activityEntity.setActivityStartDate(new Timestamp(dateFormatter.parse(activityForm.getActivityStartDate(), Locale.CHINESE).getTime()));
-            activityEntity.setActivityEndDate(new Timestamp(dateFormatter.parse(activityForm.getActivityEndDate(), Locale.CHINESE).getTime()));
-        }catch (IllegalArgumentException e) {
-            e.getMessage();
-        }
+        activityEntity.setActivityStartDate(new Timestamp(activityForm.getActivityStartDate().getTime()));
+        activityEntity.setActivityEndDate(new Timestamp(activityForm.getActivityEndDate().getTime()));
+//        try {
+//            activityEntity.setActivityStartDate(new Timestamp(dateFormatter.parse(activityForm.getActivityStartDate(), Locale.CHINESE).getTime()));
+//            activityEntity.setActivityEndDate(new Timestamp(dateFormatter.parse(activityForm.getActivityEndDate(), Locale.CHINESE).getTime()));
+//        }catch (IllegalArgumentException e) {
+//            e.getMessage();
+//        }
 
         //添加活动状态
         activityEntity.setActivityStatus(AssnActivityEntity.CHECKING);
