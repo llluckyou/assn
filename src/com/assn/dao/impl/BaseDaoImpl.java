@@ -33,8 +33,6 @@ public abstract class BaseDaoImpl<Entity, PK extends Serializable> extends DaoSu
     /**
      * entityManager用于创建CriteriaBuilder
      */
-    @PersistenceContext
-    private EntityManager entityManager;
 
     /**
      * 获取泛型第一个参数的类型信息
@@ -174,7 +172,7 @@ public abstract class BaseDaoImpl<Entity, PK extends Serializable> extends DaoSu
      * @return List<Entity>
      */
     public List<Entity> findListByMap(final Map<String, Object> map) {
-        CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();
+        CriteriaBuilder criteriaBuilder = getSessionFactory().getCriteriaBuilder();
 
         CriteriaQuery<Entity> criteriaQuery = criteriaBuilder.createQuery(entityClass);
         Root<Entity> from = criteriaQuery.from(entityClass);
@@ -187,7 +185,7 @@ public abstract class BaseDaoImpl<Entity, PK extends Serializable> extends DaoSu
         criteriaQuery.where(predicateList.toArray(new Predicate[predicateList.size()]));
 
 
-        TypedQuery<Entity> typedQuery = entityManager.createQuery(criteriaQuery);
+        TypedQuery<Entity> typedQuery = getSessionFactory().createEntityManager().createQuery(criteriaQuery);
         return typedQuery.getResultList();
     }
 

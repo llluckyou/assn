@@ -9,6 +9,13 @@ import java.sql.Timestamp;
 @Entity
 @Table(name = "assn_activity", schema = "assn", catalog = "")
 public class AssnActivityEntity {
+    public static final short CANNEL = -1;      //取消
+    public static final short CHECKING = 0;     //审核中
+    public static final short PASSED = 1;       //通过
+    public static final short NOTPASSED = 2;    //未通过
+    public static final short ONGOING = 3;      //进行中
+    public static final short ENDED = 4;        //已结束
+
     private long activityId;
     private long activityPartyId;
     private long activityUserId;

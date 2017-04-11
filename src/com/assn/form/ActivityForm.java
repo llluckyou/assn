@@ -1,7 +1,9 @@
 package com.assn.form;
 
-import com.sun.istack.internal.NotNull;
 
+import javax.validation.constraints.Future;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 /**
  * Created by Administrator on 2017/4/11.
@@ -9,12 +11,36 @@ import com.sun.istack.internal.NotNull;
  */
 
 public class ActivityForm {
+    @NotNull
+    Long userId;             //用户Id
+
+    @NotNull
+    @Size(max = 20)
     String activityName;       //活动名称
+
+    @NotNull
     String activitySpace;      //活动地点
+
+    @NotNull
+    @Future
     String activityStartDate;  //活动开始日期
+    @NotNull
+    @Future
     String activityEndDate;    //活动截止日期
+
+    @NotNull
     String partyName;          //申办社团
+
+    @NotNull
     String activityContent;    //活动内容描述
+
+    public Long getUserId() {
+        return userId;
+    }
+
+    public void setUserId(Long userId) {
+        this.userId = userId;
+    }
 
     public String getActivityName() {
         return activityName;
@@ -75,4 +101,6 @@ public class ActivityForm {
                 ", activityContent='" + activityContent + '\'' +
                 '}';
     }
+
+
 }

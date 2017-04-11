@@ -63,6 +63,11 @@
         <property name="sessionFactory" ref="sessionFactory"/>
     </bean>
 
+    <!-- 日期转换工具 -->
+    <bean name="dateFormatter" class="com.assn.model.formatter.DateFormatter">
+        <constructor-arg type="java.lang.String" value="MM-dd-yyyy"></constructor-arg>
+    </bean>
+
     <tx:advice id="txAdvice" transaction-manager="transactionManager">
         <tx:attributes>
             <tx:method name="get*" read-only="true" propagation="REQUIRED"/><!--所有get开头的方法-->
