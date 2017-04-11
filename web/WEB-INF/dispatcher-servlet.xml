@@ -3,10 +3,10 @@
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:mvc="http://www.springframework.org/schema/mvc"
        xmlns:context="http://www.springframework.org/schema/context"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
-       <mvc:default-servlet-handler />
-       <mvc:annotation-driven />
 
+       <mvc:default-servlet-handler />
        <context:component-scan base-package="com.assn.controller" />
+       <mvc:annotation-driven />
        <!--<context:component-scan base-package="com.springmvc.view" />-->
 
        <!-- 自定义视图解析器 -->
@@ -19,13 +19,18 @@
               <property name="suffix" value=".jsp" />
        </bean>
 
+       <!--hibernate数据校验器-->
+       <bean id="validator" class="org.springframework.validation.beanvalidation.LocalValidatorFactoryBean">
+              <property name="providerClass" value="org.hibernate.validator.HibernateValidator"/>
+       </bean>
 
        <!--用户登录校验-->
        <mvc:interceptors>
               <mvc:interceptor>
-                     <mvc:mapping path="/party*"/>
-                     <mvc:mapping path="/user*"/>
-                     <mvc:exclude-mapping path="/user/reg"/>
+                     <mvc:mapping path="/party/**"/>
+                     <mvc:mapping path="/user/**"/>
+                     <mvc:exclude-mapping path="/party/reg_party" />
+                     <mvc:exclude-mapping path="/user/login"/>
                      <bean class="com.assn.interceptors.LoginInterceptor"/>
               </mvc:interceptor>
        </mvc:interceptors>

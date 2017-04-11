@@ -7,16 +7,18 @@ import java.sql.Timestamp;
  * Created by Administrator on 2017/4/6.
  */
 @Entity
-@Table(name = "assn_party", schema = "assn", catalog = "")
+@Table(name = "assn_party", schema = "assn")
 public class AssnPartyEntity {
     private long partyId;
     private String partyName;
     private String partyContact;
     private String partyResume;
-    private long partySchoolId;
+    private AssnSchoolEntity partySchoolId;
+//    private long partySchoolId;
     private int partyNumber;
     private String partyProperty;
-    private String partyCategoryId;
+    private AssnCategoryEntity partyCategoryId;
+//    private String partyCategoryId;
     private Timestamp partyCreateDate;
 
     @Id
@@ -59,13 +61,13 @@ public class AssnPartyEntity {
         this.partyResume = partyResume;
     }
 
-    @Basic
-    @Column(name = "party_school_id", nullable = false)
-    public long getPartySchoolId() {
+    @ManyToOne
+    @JoinColumn(name = "party_school_id",referencedColumnName = "id", nullable = false)
+    public AssnSchoolEntity getPartySchoolId() {
         return partySchoolId;
     }
 
-    public void setPartySchoolId(long partySchoolId) {
+    public void setPartySchoolId(AssnSchoolEntity partySchoolId) {
         this.partySchoolId = partySchoolId;
     }
 
@@ -89,13 +91,13 @@ public class AssnPartyEntity {
         this.partyProperty = partyProperty;
     }
 
-    @Basic
-    @Column(name = "party_category_id", nullable = false, length = 20)
-    public String getPartyCategoryId() {
+    @ManyToOne
+    @JoinColumn(name = "party_category_id",referencedColumnName = "category_id", nullable = false)
+    public AssnCategoryEntity getPartyCategoryId() {
         return partyCategoryId;
     }
 
-    public void setPartyCategoryId(String partyCategoryId) {
+    public void setPartyCategoryId(AssnCategoryEntity partyCategoryId) {
         this.partyCategoryId = partyCategoryId;
     }
 
@@ -138,7 +140,7 @@ public class AssnPartyEntity {
         result = 31 * result + (partyName != null ? partyName.hashCode() : 0);
         result = 31 * result + (partyContact != null ? partyContact.hashCode() : 0);
         result = 31 * result + (partyResume != null ? partyResume.hashCode() : 0);
-        result = 31 * result + (int) (partySchoolId ^ (partySchoolId >>> 32));
+        result = 31 * result + (partySchoolId != null ? partySchoolId.hashCode() : 0);
         result = 31 * result + partyNumber;
         result = 31 * result + (partyProperty != null ? partyProperty.hashCode() : 0);
         result = 31 * result + (partyCategoryId != null ? partyCategoryId.hashCode() : 0);
