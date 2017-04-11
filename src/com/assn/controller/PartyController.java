@@ -11,7 +11,11 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
+import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * Created by Heal on 2017/4/9.
@@ -44,11 +48,13 @@ public class PartyController {
     }
 
     @RequestMapping(path = "/reg_party",method = RequestMethod.POST)
-    public void regParty(@Valid PartyForm partyForm, BindingResult result){
+    public String regParty(@Valid PartyForm partyForm, BindingResult result, ModelMap map){
         if (!result.hasErrors()) {
-            System.out.println(partyForm.toString());
+            partyService.add(partyForm);
+            map.addAttribute("status","success");
         }
+        map.addAttribute("errors",result.getAllErrors());
+
+        return "result";
     }
-
-
 }
