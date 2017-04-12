@@ -61,7 +61,7 @@
             <div class="row">
                 <div class="col-md-2">
                     <div class="site-logo">
-                        <a href="../../html/index1.html" class="brand">ASSN</a>
+                        <a href="./index.jsp" class="brand">ASSN</a>
                     </div>
                 </div>
 
@@ -84,7 +84,7 @@
                             </c:if>
                             <c:if test = "${sessionScope['user'] != null}">
                                 <li class="active"><a href="#intro">${sessionScope["user"]["userName"]}</a></li>
-                                <li><a href="#about">社团管理</a></li>
+                                <li><a href="#">社团管理</a></li>
                                 <li><a href="/user/quitLogin">退出登录</a></li>
                             </c:if>
                         </ul>
