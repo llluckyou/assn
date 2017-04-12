@@ -15,8 +15,8 @@
        <!--</bean>-->
 
        <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver" id="internalResourceViewResolver">
-              <property name="prefix" value="/WEB-INF/jsp/" />
-              <property name="suffix" value=".jsp" />
+              <property name="prefix" value="/WEB-INF/jsp/"/>
+              <property name="suffix" value=".jsp"/>
        </bean>
 
        <!--<bean class="org.springframework.format.support.FormattingConversionServiceFactoryBean">-->
@@ -43,7 +43,7 @@
               <mvc:interceptor>
                      <mvc:mapping path="/party/**"/>
                      <mvc:mapping path="/user/**"/>
-                     <mvc:exclude-mapping path="/party/reg_party" />
+                     <mvc:mapping path="/activity/**"/>
                      <mvc:exclude-mapping path="/user/login"/>
                      <bean class="com.assn.interceptors.LoginInterceptor"/>
               </mvc:interceptor>

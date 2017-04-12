@@ -20,6 +20,7 @@ public class AssnPartyEntity {
     private AssnCategoryEntity partyCategoryId;
 //    private String partyCategoryId;
     private Timestamp partyCreateDate;
+    private String partyImg;
 
     @Override
     public String toString() {
@@ -126,6 +127,16 @@ public class AssnPartyEntity {
         this.partyCreateDate = partyCreateDate;
     }
 
+    @Basic
+    @Column(name = "party_img")
+    public String getPartyImg() {
+        return partyImg;
+    }
+
+    public void setPartyImg(String partyImg) {
+        this.partyImg = partyImg;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -160,6 +171,7 @@ public class AssnPartyEntity {
         result = 31 * result + (partyProperty != null ? partyProperty.hashCode() : 0);
         result = 31 * result + (partyCategoryId != null ? partyCategoryId.hashCode() : 0);
         result = 31 * result + (partyCreateDate != null ? partyCreateDate.hashCode() : 0);
+        result = 31 * result + (partyImg != null ? partyImg.hashCode() : 0);
         return result;
     }
 }
