@@ -19,10 +19,24 @@
               <property name="suffix" value=".jsp" />
        </bean>
 
-       <!--hibernate数据校验器-->
-       <bean id="validator" class="org.springframework.validation.beanvalidation.LocalValidatorFactoryBean">
-              <property name="providerClass" value="org.hibernate.validator.HibernateValidator"/>
+       <!--<bean class="org.springframework.format.support.FormattingConversionServiceFactoryBean">-->
+              <!--<property name="formatters">-->
+                     <!--<set>-->
+                            <!--<bean name="dateFormatter" class="com.assn.model.formatter.DateFormatter">-->
+                                   <!--<constructor-arg type="java.lang.String" value="MM-dd-yyyy"></constructor-arg>-->
+                            <!--</bean>-->
+                     <!--</set>-->
+              <!--</property>-->
+       <!--</bean>-->
+
+       <bean name="dateFormatter" class="com.assn.model.formatter.DateFormatter">
+              <constructor-arg type="java.lang.String" value="MM-dd-yyyy"></constructor-arg>
        </bean>
+
+       <!--hibernate数据校验器-->
+       <!--<bean id="validator" class="org.springframework.validation.beanvalidation.LocalValidatorFactoryBean">-->
+              <!--<property name="providerClass" value="org.hibernate.validator.HibernateValidator"/>-->
+       <!--</bean>-->
 
        <!--用户登录校验-->
        <mvc:interceptors>
