@@ -17,10 +17,13 @@ public class AssnCreateInfoEntity {
     private AssnSchoolEntity schoolId;
     private String userCellphone;
     private int status;
+
+
     private String verification;
     private AssnWebManagerEntity managerId;
     private Timestamp createDate;
     private String assnResume;
+    private String assnImg;
 
     @Id
     @Column(name = "id", nullable = false)
@@ -142,6 +145,16 @@ public class AssnCreateInfoEntity {
         this.assnResume = assnResume;
     }
 
+
+    @Basic
+    @Column(name = "assn_img")
+    public String getAssnImg() {
+        return assnImg;
+    }
+    public void setAssnImg(String assnImg) {
+        this.assnImg = assnImg;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -150,19 +163,20 @@ public class AssnCreateInfoEntity {
         AssnCreateInfoEntity that = (AssnCreateInfoEntity) o;
 
         if (id != that.id) return false;
-        if (userId != that.userId) return false;
-        if (assnName != that.assnName) return false;
         if (assnProperty != that.assnProperty) return false;
-        if (schoolId != that.schoolId) return false;
-        if (userCellphone != that.userCellphone) return false;
         if (status != that.status) return false;
-        if (managerId != that.managerId) return false;
+        if (userId != null ? !userId.equals(that.userId) : that.userId != null) return false;
+        if (assnName != null ? !assnName.equals(that.assnName) : that.assnName != null) return false;
         if (assnCategoryId != null ? !assnCategoryId.equals(that.assnCategoryId) : that.assnCategoryId != null)
             return false;
+        if (schoolId != null ? !schoolId.equals(that.schoolId) : that.schoolId != null) return false;
+        if (userCellphone != null ? !userCellphone.equals(that.userCellphone) : that.userCellphone != null)
+            return false;
         if (verification != null ? !verification.equals(that.verification) : that.verification != null) return false;
+        if (managerId != null ? !managerId.equals(that.managerId) : that.managerId != null) return false;
         if (createDate != null ? !createDate.equals(that.createDate) : that.createDate != null) return false;
-
-        return true;
+        if (assnResume != null ? !assnResume.equals(that.assnResume) : that.assnResume != null) return false;
+        return assnImg != null ? assnImg.equals(that.assnImg) : that.assnImg == null;
     }
 
     @Override
@@ -178,6 +192,8 @@ public class AssnCreateInfoEntity {
         result = 31 * result + (verification != null ? verification.hashCode() : 0);
         result = 31 * result + (managerId != null ? managerId.hashCode() : 0);
         result = 31 * result + (createDate != null ? createDate.hashCode() : 0);
+        result = 31 * result + (assnResume != null ? assnResume.hashCode() : 0);
+        result = 31 * result + (assnImg != null ? assnImg.hashCode() : 0);
         return result;
     }
 
