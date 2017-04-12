@@ -12,8 +12,10 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
+import java.io.IOException;
 
 /**
  * Created by Administrator on 2017/4/10.
@@ -22,13 +24,20 @@ import javax.validation.Valid;
 @RequestMapping("/activity")
 public class ActivityController {
 
+    public static final String RELEASE = "releaseActivity";
+
     @Resource(name = "activityServiceImpl")
     ActivityService activityService;
 
     @RequestMapping("/inputForm")
-    public String inputActivityForm(ModelMap map) {
+    public String inputActivityForm(ModelMap map, HttpSession session ) {
+        Object user = session.getAttribute("user");
+        if(user == null) {
+            return "redirect:/html/login.html";
+        }
+
         map.addAttribute("activity", new ActivityForm());
-        return "releaseActivity";
+        return RELEASE;
     }
 
     @RequestMapping("/release")
