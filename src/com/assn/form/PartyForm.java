@@ -1,6 +1,7 @@
 package com.assn.form;
 
 import com.assn.entity.AssnSchoolEntity;
+import com.assn.entity.AssnUserEntity;
 import com.sun.istack.internal.Nullable;
 
 import javax.validation.constraints.*;
@@ -16,6 +17,8 @@ public class PartyForm {
     @Size(max = 20)
     private String partyName;
 
+    private AssnUserEntity userId;
+
     @NotNull
     @Pattern(regexp = "^((13[0-9])|(15[^4,\\D])|(18[0,5-9]))\\d{8}$")
     private String partyContact;
@@ -30,7 +33,7 @@ public class PartyForm {
     @Min(1)
     private int partyNumber;
 
-    private String partyProperty;
+    private int partyProperty;
 
     @NotNull
     private String partyCategoryId;
@@ -79,11 +82,11 @@ public class PartyForm {
         this.partyNumber = partyNumber;
     }
 
-    public String getPartyProperty() {
+    public int getPartyProperty() {
         return partyProperty;
     }
 
-    public void setPartyProperty(String partyProperty) {
+    public void setPartyProperty(int partyProperty) {
         this.partyProperty = partyProperty;
     }
 
@@ -115,5 +118,14 @@ public class PartyForm {
                 ", partyCategoryId='" + partyCategoryId + '\'' +
                 ", partyCreateDate=" + partyCreateDate +
                 '}';
+    }
+
+
+    public AssnUserEntity getUserId() {
+        return userId;
+    }
+
+    public void setUserId(AssnUserEntity userId) {
+        this.userId = userId;
     }
 }

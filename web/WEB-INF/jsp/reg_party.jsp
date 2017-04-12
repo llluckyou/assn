@@ -15,8 +15,8 @@
 </head>
 <body>
 
-<div class="container-fluid">
-    <div class="row-fluid">
+<div class="container">
+    <div class="row">
         <div class="span12">
             <form class="form-horizontal" action="/party/reg_party" method="post">
                 <fieldset>
@@ -28,7 +28,7 @@
                         <!-- Text input-->
                         <label class="control-label" for="partyName">社团名称</label>
                         <div class="controls">
-                            <input type="text" id="partyName" placeholder="社团名称" name="partyName" class="input-xlarge" value="好丽友">
+                            <input type="text" id="partyName" placeholder="社团名称" name="partyName" value="好丽友">
                             <p class="help-block"></p>
                         </div>
                     </div>
@@ -114,6 +114,9 @@
         </div>
     </div>
 </div>
+
+<script src="/js/jquery.min.js"></script>
+<script src="/js/bootstrap.min.js"></script>
 
 </body>
 </html>

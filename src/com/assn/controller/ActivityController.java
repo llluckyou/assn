@@ -31,11 +31,6 @@ public class ActivityController {
 
     @RequestMapping("/inputForm")
     public String inputActivityForm(ModelMap map, HttpSession session ) {
-        Object user = session.getAttribute("user");
-        if(user == null) {
-            return "redirect:/html/login.html";
-        }
-
         map.addAttribute("activity", new ActivityForm());
         return RELEASE;
     }
