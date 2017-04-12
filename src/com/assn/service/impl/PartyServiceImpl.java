@@ -7,7 +7,6 @@ import com.assn.form.PartyForm;
 import com.assn.service.CategoryService;
 import com.assn.service.PartyService;
 import com.assn.service.SchoolService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;

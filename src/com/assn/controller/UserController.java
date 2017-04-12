@@ -10,7 +10,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import java.io.IOException;
 import java.sql.Timestamp;
 import java.util.HashMap;
 import java.util.Map;
@@ -53,10 +55,10 @@ public class UserController {
 
     private static final String CODE_ERROR = "authError";
     private static final String LOGIN_ERROR = "loginError";
-    private static final String LOGIN_SUCCESS = "loginSuccess";
+    private static final String LOGIN_SUCCESS = "index";
 
     @RequestMapping(value = "/login", method = RequestMethod.POST)
-    public String login(LoginForm loginForm, HttpSession session) {
+    public String login(LoginForm loginForm, HttpSession session, HttpServletResponse response) {
         if(!loginForm.getAuthcode().equalsIgnoreCase(session.getAttribute("auth").toString())) {
             return CODE_ERROR;
         }
@@ -69,7 +71,21 @@ public class UserController {
             return LOGIN_ERROR;
         }else {
             session.setAttribute("user", userEntity);
+            try {
+                response.sendRedirect("/");
+            } catch (IOException e) {
+            }
             return LOGIN_SUCCESS;
+        }
+    }
+
+    @RequestMapping(value = "/quitLogin", method = RequestMethod.GET)
+    public void quitLogin(HttpSession session,HttpServletResponse response) {
+        session.removeAttribute("user");
+        try {
+            response.sendRedirect("/");
+        }catch (IOException e) {
+            e.printStackTrace();
         }
     }
 }
