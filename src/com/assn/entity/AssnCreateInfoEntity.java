@@ -7,19 +7,20 @@ import java.sql.Timestamp;
  * Created by Administrator on 2017/4/6.
  */
 @Entity
-@Table(name = "assn_create_info", schema = "assn", catalog = "")
+@Table(name = "assn_create_info", schema = "assn")
 public class AssnCreateInfoEntity {
     private long id;
-    private long userId;
-    private int assnName;
-    private String assnCategoryId;
+    private AssnUserEntity userId;
+    private String assnName;
+    private AssnCategoryEntity assnCategoryId;
     private int assnProperty;
-    private long schoolId;
-    private int userCellphone;
+    private AssnSchoolEntity schoolId;
+    private String userCellphone;
     private int status;
     private String verification;
-    private long managerId;
+    private AssnWebManagerEntity managerId;
     private Timestamp createDate;
+    private String assnResume;
 
     @Id
     @Column(name = "id", nullable = false)
@@ -31,33 +32,33 @@ public class AssnCreateInfoEntity {
         this.id = id;
     }
 
-    @Basic
-    @Column(name = "user_id", nullable = false)
-    public long getUserId() {
+    @ManyToOne
+    @JoinColumn(name = "user_id", nullable = false)
+    public AssnUserEntity getUserId() {
         return userId;
     }
 
-    public void setUserId(long userId) {
+    public void setUserId(AssnUserEntity userId) {
         this.userId = userId;
     }
 
     @Basic
     @Column(name = "assn_name", nullable = false)
-    public int getAssnName() {
+    public String getAssnName() {
         return assnName;
     }
 
-    public void setAssnName(int assnName) {
+    public void setAssnName(String assnName) {
         this.assnName = assnName;
     }
 
-    @Basic
-    @Column(name = "assn_category_id", nullable = false, length = 20)
-    public String getAssnCategoryId() {
+    @ManyToOne
+    @JoinColumn(name = "assn_category_id", nullable = false)
+    public AssnCategoryEntity getAssnCategoryId() {
         return assnCategoryId;
     }
 
-    public void setAssnCategoryId(String assnCategoryId) {
+    public void setAssnCategoryId(AssnCategoryEntity assnCategoryId) {
         this.assnCategoryId = assnCategoryId;
     }
 
@@ -71,23 +72,23 @@ public class AssnCreateInfoEntity {
         this.assnProperty = assnProperty;
     }
 
-    @Basic
-    @Column(name = "school_id", nullable = false)
-    public long getSchoolId() {
+    @ManyToOne
+    @JoinColumn(name = "school_id", nullable = false)
+    public AssnSchoolEntity getSchoolId() {
         return schoolId;
     }
 
-    public void setSchoolId(long schoolId) {
+    public void setSchoolId(AssnSchoolEntity schoolId) {
         this.schoolId = schoolId;
     }
 
     @Basic
     @Column(name = "user_cellphone", nullable = false)
-    public int getUserCellphone() {
+    public String getUserCellphone() {
         return userCellphone;
     }
 
-    public void setUserCellphone(int userCellphone) {
+    public void setUserCellphone(String userCellphone) {
         this.userCellphone = userCellphone;
     }
 
@@ -111,13 +112,13 @@ public class AssnCreateInfoEntity {
         this.verification = verification;
     }
 
-    @Basic
-    @Column(name = "manager_id", nullable = false)
-    public long getManagerId() {
+    @ManyToOne
+    @JoinColumn(name = "manager_id")
+    public AssnWebManagerEntity getManagerId() {
         return managerId;
     }
 
-    public void setManagerId(long managerId) {
+    public void setManagerId(AssnWebManagerEntity managerId) {
         this.managerId = managerId;
     }
 
@@ -129,6 +130,16 @@ public class AssnCreateInfoEntity {
 
     public void setCreateDate(Timestamp createDate) {
         this.createDate = createDate;
+    }
+
+    @Basic
+    @Column(name = "assn_resume")
+    public String getAssnResume() {
+        return assnResume;
+    }
+
+    public void setAssnResume(String assnResume) {
+        this.assnResume = assnResume;
     }
 
     @Override
@@ -157,16 +168,18 @@ public class AssnCreateInfoEntity {
     @Override
     public int hashCode() {
         int result = (int) (id ^ (id >>> 32));
-        result = 31 * result + (int) (userId ^ (userId >>> 32));
-        result = 31 * result + assnName;
+        result = 31 * result + (userId != null ? userId.hashCode() : 0);
+        result = 31 * result + (assnName != null ? assnName.hashCode() : 0);
         result = 31 * result + (assnCategoryId != null ? assnCategoryId.hashCode() : 0);
         result = 31 * result + assnProperty;
-        result = 31 * result + (int) (schoolId ^ (schoolId >>> 32));
-        result = 31 * result + userCellphone;
+        result = 31 * result + (schoolId != null ? schoolId.hashCode() : 0);
+        result = 31 * result + (userCellphone != null ? userCellphone.hashCode() : 0);
         result = 31 * result + status;
         result = 31 * result + (verification != null ? verification.hashCode() : 0);
-        result = 31 * result + (int) (managerId ^ (managerId >>> 32));
+        result = 31 * result + (managerId != null ? managerId.hashCode() : 0);
         result = 31 * result + (createDate != null ? createDate.hashCode() : 0);
         return result;
     }
+
+
 }

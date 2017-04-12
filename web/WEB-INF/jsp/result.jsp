@@ -12,10 +12,6 @@
     <title>Result</title>
 </head>
 <body>
-${status}
-
-<c:forEach items="${errors}" var="error">
-    <li>${error}</li>
-</c:forEach>
+${result}
 </body>
 </html>

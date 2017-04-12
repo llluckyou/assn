@@ -108,7 +108,7 @@
                 <div class="animatedParent">
                     <div class="section-heading text-center animated bounceInDown">
                         <div class="create">
-                            <a href="#createAssn">创建一个新社团 </a>
+                            <a href="/party/reg_party">创建一个新社团 </a>
                             <span>&</span>
                             <a href="/activity/inputForm"> 发布一个新活动</a>
                         </div>
