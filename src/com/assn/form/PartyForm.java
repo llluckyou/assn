@@ -35,6 +35,8 @@ public class PartyForm {
 
     private int partyProperty;
 
+    private String assnImg;
+
     @NotNull
     private String partyCategoryId;
     private Timestamp partyCreateDate = new Timestamp(System.currentTimeMillis());
@@ -106,20 +108,6 @@ public class PartyForm {
         this.partyCreateDate = partyCreateDate;
     }
 
-    @Override
-    public String toString() {
-        return "PartyForm{" +
-                "partyName='" + partyName + '\'' +
-                ", partyContact='" + partyContact + '\'' +
-                ", partyResume='" + partyResume + '\'' +
-                ", partySchoolId=" + partySchoolId +
-                ", partyNumber=" + partyNumber +
-                ", partyProperty='" + partyProperty + '\'' +
-                ", partyCategoryId='" + partyCategoryId + '\'' +
-                ", partyCreateDate=" + partyCreateDate +
-                '}';
-    }
-
 
     public AssnUserEntity getUserId() {
         return userId;
@@ -127,5 +115,13 @@ public class PartyForm {
 
     public void setUserId(AssnUserEntity userId) {
         this.userId = userId;
+    }
+
+    public String getAssnImg() {
+        return assnImg;
+    }
+
+    public void setAssnImg(String assnImg) {
+        this.assnImg = assnImg;
     }
 }

@@ -32,15 +32,16 @@ public class CreateInfoServiceImpl extends BaseServiceImpl<AssnCreateInfoEntity,
 
         AssnCreateInfoEntity createInfoEntity = new AssnCreateInfoEntity();
 
-        createInfoEntity.setStatus(0);
-        createInfoEntity.setUserId(partyForm.getUserId());
-        createInfoEntity.setAssnCategoryId(categoryEntity);
-        createInfoEntity.setSchoolId(schoolEntity);
-        createInfoEntity.setAssnName(partyForm.getPartyName());
-        createInfoEntity.setUserCellphone(partyForm.getPartyContact());
-        createInfoEntity.setAssnResume(partyForm.getPartyResume());
-        createInfoEntity.setCreateDate(partyForm.getPartyCreateDate());
-        createInfoEntity.setAssnProperty(partyForm.getPartyProperty());
+        createInfoEntity.setStatus(0); //状态
+        createInfoEntity.setUserId(partyForm.getUserId()); //申请用户
+        createInfoEntity.setAssnCategoryId(categoryEntity); //社团所属类别
+        createInfoEntity.setSchoolId(schoolEntity); // 社团所属学校
+        createInfoEntity.setAssnName(partyForm.getPartyName()); // 社团名称
+        createInfoEntity.setUserCellphone(partyForm.getPartyContact()); //联系方式
+        createInfoEntity.setAssnResume(partyForm.getPartyResume()); // 简介
+        createInfoEntity.setCreateDate(partyForm.getPartyCreateDate()); //创建日期
+        createInfoEntity.setAssnProperty(partyForm.getPartyProperty()); //性质
+        createInfoEntity.setAssnImg(partyForm.getAssnImg()); //图片
 
 //        for (Field field : partyForm.getClass().getDeclaredFields()) {
 //            String fieldName = field.getName();
