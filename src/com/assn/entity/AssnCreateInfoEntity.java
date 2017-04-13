@@ -7,18 +7,25 @@ import java.sql.Timestamp;
  * Created by Administrator on 2017/4/6.
  */
 @Entity
-@Table(name = "assn_create_info", schema = "assn")
+@Table(name = "assn_create_info", schema = "assn", catalog = "")
 public class AssnCreateInfoEntity {
     private long id;
     private AssnUserEntity userId;
+
+
     private String assnName;
     private AssnCategoryEntity assnCategoryId;
+
     private int assnProperty;
     private AssnSchoolEntity schoolId;
+
+
     private String userCellphone;
     private int status;
     private String verification;
     private AssnWebManagerEntity managerId;
+
+
     private Timestamp createDate;
     private String assnResume;
 
@@ -32,6 +39,7 @@ public class AssnCreateInfoEntity {
         this.id = id;
     }
 
+
     @ManyToOne
     @JoinColumn(name = "user_id", nullable = false)
     public AssnUserEntity getUserId() {
@@ -43,7 +51,7 @@ public class AssnCreateInfoEntity {
     }
 
     @Basic
-    @Column(name = "assn_name", nullable = false)
+    @Column(name = "assn_name", nullable = false, length = 50)
     public String getAssnName() {
         return assnName;
     }
@@ -83,7 +91,7 @@ public class AssnCreateInfoEntity {
     }
 
     @Basic
-    @Column(name = "user_cellphone", nullable = false)
+    @Column(name = "user_cellphone", nullable = false, length = 16)
     public String getUserCellphone() {
         return userCellphone;
     }
@@ -103,7 +111,7 @@ public class AssnCreateInfoEntity {
     }
 
     @Basic
-    @Column(name = "verification", nullable = false, length = 200)
+    @Column(name = "verification", nullable = true, length = 200)
     public String getVerification() {
         return verification;
     }
@@ -133,7 +141,7 @@ public class AssnCreateInfoEntity {
     }
 
     @Basic
-    @Column(name = "assn_resume")
+    @Column(name = "assn_resume", nullable = true, length = 200)
     public String getAssnResume() {
         return assnResume;
     }
@@ -182,4 +190,27 @@ public class AssnCreateInfoEntity {
     }
 
 
+    private Integer newColumn;
+
+    @Basic
+    @Column(name = "new_column", nullable = true)
+    public Integer getNewColumn() {
+        return newColumn;
+    }
+
+    public void setNewColumn(Integer newColumn) {
+        this.newColumn = newColumn;
+    }
+
+    private String assnImg;
+
+    @Basic
+    @Column(name = "assn_img", nullable = true, length = 100)
+    public String getAssnImg() {
+        return assnImg;
+    }
+
+    public void setAssnImg(String assnImg) {
+        this.assnImg = assnImg;
+    }
 }
