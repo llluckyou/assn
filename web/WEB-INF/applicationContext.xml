@@ -40,22 +40,6 @@
                 <prop key="hibernate.connection.driver_class">com.mysql.jdbc.Driver</prop>
             </props>
         </property>
-        <!--<property name="mappingLocations">-->
-        <!--<list>-->
-        <!--<value>classpath:com/assn/entity/AssnActivityEntity.hbm.xml</value>-->
-        <!--<value>classpath:com/assn/entity/AssnActivityCommentEntity.hbm.xml</value>-->
-        <!--<value>classpath:com/assn/entity/AssnActivityJoinEntity.hbm.xml</value>-->
-        <!--<value>classpath:com/assn/entity/AssnApplyEntity.hbm.xml</value>-->
-        <!--<value>classpath:com/assn/entity/AssnCategoryEntity.hbm.xml</value>-->
-        <!--<value>classpath:com/assn/entity/AssnCreateInfoEntity.hbm.xml</value>-->
-        <!--<value>classpath:com/assn/entity/AssnPartyEntity.hbm.xml</value>-->
-        <!--<value>classpath:com/assn/entity/AssnPositionEntity.hbm.xml</value>-->
-        <!--<value>classpath:com/assn/entity/AssnSchoolEntity.hbm.xml</value>-->
-        <!--<value>classpath:com/assn/entity/AssnUserEntity.hbm.xml</value>-->
-        <!--<value>classpath:com/assn/entity/AssnUserPartyEntity.hbm.xml</value>-->
-        <!--<value>classpath:com/assn/entity/AssnWebManagerEntity.hbm.xml</value>-->
-        <!--</list>-->
-        <!--</property>-->
     </bean>
 
     <!--事务管理-->
@@ -82,5 +66,11 @@
     <aop:config>
         <aop:advisor advice-ref="txAdvice" pointcut="execution(* com.assn.service.*Service.*(..))"/>
     </aop:config>
+
+    <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+        <property name="defaultEncoding" value="utf-8"/>
+        <property name="maxUploadSize" value="540000"/>
+        <property name="uploadTempDir" value="/upload/tmp"/>
+    </bean>
 
 </beans>
