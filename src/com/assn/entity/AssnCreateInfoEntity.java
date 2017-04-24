@@ -30,7 +30,6 @@ public class AssnCreateInfoEntity {
 
     private Timestamp createDate;
     private String assnResume;
-    private String assnImg;
 
     @Id
     @Column(name = "id", nullable = false)
@@ -154,15 +153,6 @@ public class AssnCreateInfoEntity {
     }
 
 
-    @Basic
-    @Column(name = "assn_img")
-    public String getAssnImg() {
-        return assnImg;
-    }
-    public void setAssnImg(String assnImg) {
-        this.assnImg = assnImg;
-    }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -203,19 +193,6 @@ public class AssnCreateInfoEntity {
         result = 31 * result + (assnResume != null ? assnResume.hashCode() : 0);
         result = 31 * result + (assnImg != null ? assnImg.hashCode() : 0);
         return result;
-    }
-
-
-    private Integer newColumn;
-
-    @Basic
-    @Column(name = "new_column", nullable = true)
-    public Integer getNewColumn() {
-        return newColumn;
-    }
-
-    public void setNewColumn(Integer newColumn) {
-        this.newColumn = newColumn;
     }
 
     private String assnImg;
