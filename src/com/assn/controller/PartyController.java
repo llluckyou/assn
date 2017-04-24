@@ -56,7 +56,7 @@ public class PartyController {
                 String date = new SimpleDateFormat("yyyy-MM-dd").format(Calendar.getInstance().getTime());
                 String path = session.getServletContext().getRealPath("upload/img/"+date);
                 String fileName = System.currentTimeMillis() + extName;
-                partyImg = "/upload/img/" + fileName;
+                partyImg = "/upload/img/" + date + "/" + fileName;
                 File img = new File(path,fileName);
 
                 if (!img.exists()){ //创建目录
